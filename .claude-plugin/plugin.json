@@ -1,0 +1,13 @@
+{
+  "name": "el-combo",
+  "version": "0.1.0",
+  "description": "A Product Owner, a Developer and a Tester with the phase commands that move work through them: po, plan, build, verify, ship. Technology-agnostic; each project supplies its own gates and conventions.",
+  "author": {
+    "name": "Bryan Moslo",
+    "email": "balgutria@wawand.co"
+  },
+  "homepage": "https://github.com/BryanMoslo/el-combo",
+  "repository": "https://github.com/BryanMoslo/el-combo",
+  "license": "MIT",
+  "keywords": ["workflow", "product-owner", "developer", "tester", "planning", "qa", "pull-requests"]
+}

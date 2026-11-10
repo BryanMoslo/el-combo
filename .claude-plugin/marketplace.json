@@ -1,0 +1,16 @@
+{
+  "name": "el-combo",
+  "description": "el-combo: a Product Owner, a Developer and a Tester for Claude Code.",
+  "owner": {
+    "name": "Bryan Moslo",
+    "email": "balgutria@wawand.co"
+  },
+  "plugins": [
+    {
+      "name": "el-combo",
+      "source": "./",
+      "description": "Three agents and the po → plan → build → verify → ship phases, for any project.",
+      "category": "workflow"
+    }
+  ]
+}
