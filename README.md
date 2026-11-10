@@ -96,7 +96,7 @@ The layout follows Anthropic's Claude Code plugin documentation (checked Novembe
 | No top-level `bin/`, no Git LFS, no submodules | claude.ai rejects plugins with a top-level `bin/`; clones never download LFS content | [Host and maintain a marketplace](https://code.claude.com/docs/en/plugins/host-marketplace.md) |
 
 | `evals/` with one folder per case (`prompt.md` plus `graders/`), results git-ignored | Test plugin behavior with `claude plugin eval`; pair a grader on the result with one on the steps that produced it; prefer free graders (`regex`, `tool_used`) and keep `llm` rubrics short, with concrete PASS/FAIL conditions | [Test plugins with evals](https://code.claude.com/docs/en/plugin-evals.md) |
-| CI runs `claude plugin validate --strict .` on every push; evals run on demand with pinned models, a threshold and a cost ceiling | Keep `--strict` in CI; in CI pass `--trust-plugin`, pin `--model` and `--judge-model`, keep the report local, set `--max-cost-usd` | [Publish: prepare for release](https://code.claude.com/docs/en/plugins/publish.md#prepare-your-plugin-for-release), [Evals: run in CI](https://code.claude.com/docs/en/plugin-evals.md) |
+| CI runs `claude plugin validate --strict .` on every push; evals run locally only | Keep `--strict` in CI. Evals in CI would need an API key billed per use, so they stay on your machine | [Publish: prepare for release](https://code.claude.com/docs/en/plugins/publish.md#prepare-your-plugin-for-release), [Evals: requirements](https://code.claude.com/docs/en/plugin-evals.md) |
 
 ## Evals
 
@@ -111,7 +111,7 @@ The layout follows Anthropic's Claude Code plugin documentation (checked Novembe
 | `tester-finds-gaps` | agents | The tester names the missing states and risks in thin acceptance criteria |
 | `developer-flags-overengineering` | agents | The developer argues against a single-implementation abstraction |
 
-Run them from the repo root (each run uses your Claude credentials and costs a little; the full suite once was about $0.60):
+Run them from the repo root. They use your own Claude login, so with a subscription they count against your plan's usage limits like any other session, with no extra charge. The `$` figures the command prints are list-price estimates, not a bill:
 
 ```
 claude plugin eval . --tag smoke
@@ -122,8 +122,7 @@ By default each case runs 3 times with the plugin and 3 times without it, and re
 
 ## CI
 
-- **Validate** (`.github/workflows/validate.yml`): `claude plugin validate --strict .` on every push and pull request. Free; no credentials.
-- **Evals** (`.github/workflows/evals.yml`): manual, from the Actions tab. Pick `smoke`, `agents` or `all`, the runs per case and a cost ceiling. Needs an `ANTHROPIC_API_KEY` repository secret. Results are attached to the run as `results.json`.
+`.github/workflows/validate.yml` runs `claude plugin validate --strict .` on every push and pull request. It needs no credentials and doesn't call a model.
 
 ## Releasing
 
