@@ -14,7 +14,7 @@ The agents are technology-agnostic. Each project tells them its gates, branches 
 |---|---|---|
 | `el-combo:product-owner` | Strategic, technically critical | The why and the what: problem, scope, acceptance criteria, UX states, security and performance as requirements |
 | `el-combo:developer` | Pragmatic, opinionated | The how: the smallest coherent change, reuse before new code, native before libraries, tests first. Says what it thinks, argues once, then follows the decision |
-| `el-combo:tester` | Skeptical, thorough | The proof: the project's gates, the spec's checks, then edge cases, UX, performance, load, security and flaky networks, with evidence and reusable test cases |
+| `el-combo:tester` | Skeptical, thorough | The proof: the spec's checks, then edge cases, UX, performance, load, security and flaky networks, with evidence and reusable test cases |
 
 Personality shows up in decisions, not in tone. None of them roleplays.
 
@@ -27,10 +27,10 @@ Personality shows up in decisions, not in tone. None of them roleplays.
 | `/el-combo:po <need>` | The PO drafts the issue and revises it with you; once you approve, it's created with `gh` | approve the drafted issue before it's created |
 | `/el-combo:plan <slug> #<issue>` | The PO researches and asks every open decision in one round, then writes the spec; the Tester checks the acceptance criteria; the plan is posted as a comment on the issue | answer the open questions |
 | `/el-combo:build <slug>` | The Developer builds the spec with tests, then verify and ship run | answer anything the spec doesn't cover (it also stops if verify fails) |
-| `/el-combo:verify` | The Tester runs the gates and exercises the change; the Developer reviews the diff | nothing; it reports and stops |
+| `/el-combo:verify` | Runs the project's gates, the Tester exercises the change, and the Developer reviews the diff | nothing; it reports and stops |
 | `/el-combo:ship` | Commit, push, and a PR that closes the issue: what it adds, how it was tested, database changes, environment variables, evidence attached | confirm any decision not yet recorded |
 
-Questions, commits and PRs always happen in the main conversation; the agents do the deep work and report back. Every phase writes to `.claude/plans/<slug>.md`, so the next phase, or a fresh session, picks up from the file instead of the chat.
+Questions, commits and PRs always happen in the main conversation; the agents do the deep work and report back. Every phase writes to `.claude/plans/<slug>.md`, so the next phase, or a fresh session, picks up from the file instead of the chat. Run `/clear` between phases (`po` → `plan` → `build`): carrying a long planning chat into the build is the most expensive part of a run, and the file already holds what the next phase needs.
 
 ## Install
 
@@ -56,7 +56,7 @@ To turn the plugin on for everyone too, add `"enabledPlugins": { "el-combo@el-co
 ## Adopt it in a project
 
 1. Add an `## el-combo` section to the project's `CLAUDE.md` from [templates/project-contract.md](templates/project-contract.md): the gates command, base branch, how to run and log in locally, safe environments, unsafe actions, evidence rules, deploy.
-2. Make the gates one command that exits non-zero on any failure (the same one CI runs).
+2. Make the gates one command (the same one CI runs) that prints one line per check, shows the full output only for failing checks, and exits non-zero on any failure.
 3. Create `tests/cases/` (the Tester fills it as it goes) and `.claude/plans/`.
 4. Put stack-specific rules (framework idioms, gotchas, architecture) in `CLAUDE.md` too. The agents follow them over their own defaults.
 

@@ -19,4 +19,4 @@ Goal: `.claude/plans/<slug>.md` with a spec and **no open decisions**. **Do not 
    - remove anything nobody asked for, or ask about it;
    - any "default", "assumed", "TBD", or "my call" left → step 4.
 8. Nothing open → post the plan file as a comment on the issue: `gh issue comment <n> --body-file .claude/plans/<slug>.md`. A plan was posted there before (a re-plan) → post the new one starting with "Updated plan; replaces the earlier one." Never edit or delete earlier comments.
-9. Reply with the checklist, the decisions it rests on, and the comment link. Suggest `/el-combo:build <slug>` only when nothing is open. Stop.
+9. Reply with the checklist, the decisions it rests on, and the comment link. Only when nothing is open, suggest `/clear`, then `/el-combo:build <slug>`: the plan file carries everything the build needs, so it doesn't have to drag this conversation along. Stop.

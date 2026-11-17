@@ -2,7 +2,7 @@
 
 The el-combo plugin reads this section. Keep it short; point to other sections of this file for detail.
 
-- **Gates:** `<one command that runs every CI check and exits non-zero on any failure>`
+- **Gates:** `<one command that runs every CI check>`. It prints one line per check (✅/❌), the full output only for checks that fail, and exits non-zero on any failure, so the model never reads pages of passing logs.
 - **Base branch:** `<e.g. main or staging>` · **Release branch:** `<e.g. main, or none>`
 - **Branch names:** `<type>/<short-slug>`
 - **Run locally:** `<command>` → `<URL>`. Log in as a test user: `<how>`.

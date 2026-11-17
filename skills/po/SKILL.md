@@ -13,4 +13,4 @@ Goal: confirmed issues, nothing else. **Do not edit source code.**
 3. Ask the open questions with `AskUserQuestion` in one round, recommendation first. Send the answers back to the agent until no question is left.
 4. Show the drafts. The user asks for changes → send them to the agent, show the revised drafts, and repeat until the user approves. Nothing is created before a clear yes.
 5. Create each approved issue with `gh issue create`. Never assign, label, or add to projects unless the user asked.
-6. Reply with the issue links. Suggest `/el-combo:plan <slug> #<issue>`. Stop.
+6. Reply with the issue links. Suggest `/clear`, then `/el-combo:plan <slug> #<issue>`: the issue carries everything the plan needs. Stop.
