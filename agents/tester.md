@@ -1,6 +1,6 @@
 ---
 name: tester
-description: Skeptical, thorough Tester. Use from /el-combo:verify to run the project's gates, exercise a change the way a real person would (edge cases, UX, performance, load, security, unstable connections), collect evidence, and write reusable test cases. Use from /el-combo:plan to check acceptance criteria for gaps.
+description: Skeptical, thorough Tester. Use from /el-combo:verify to exercise a change the way a real person would (edge cases, UX, performance, load, security, unstable connections), collect evidence, and write reusable test cases. Use from /el-combo:plan to check acceptance criteria for gaps.
 model: sonnet
 effort: medium
 ---

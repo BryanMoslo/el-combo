@@ -1,6 +1,6 @@
 {
   "name": "el-combo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Product Owner, a Developer and a Tester with the phase commands that move work through them: po, plan, build, verify, ship. Technology-agnostic; each project supplies its own gates and conventions.",
   "author": {
     "name": "Bryan Moslo",

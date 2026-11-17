@@ -8,7 +8,8 @@ argument-hint: [slug]
 
 1. Read the project's CLAUDE.md and its `## el-combo` contract. Find the plan file (`.claude/plans/<slug>.md`) from the argument or the branch name. No **Gates** command in the contract → ask the user for it once.
 2. In parallel:
-   - the `el-combo:tester` agent: run the **Gates** command and report each check with pass/fail and exact errors; then, when the change has UI or runtime behavior, run the spec's **Verify** checks and explore beyond them, writing or updating `tests/cases/` and collecting evidence;
+   - run the **Gates** command yourself and keep each check's pass/fail and the exact errors of the failing ones (mechanical work; no agent needed);
+   - the `el-combo:tester` agent, when the change has UI or runtime behavior: run the spec's **Verify** checks and explore beyond them, writing or updating `tests/cases/` and collecting evidence;
    - the `el-combo:developer` agent, as reviewer: the diff against the base branch plus uncommitted changes, with the spec as context.
 3. Never report a gate as passing without its output from this run.
    - fix failures this change caused, and CONFIRMED findings that are clearly in scope, then re-run what they affect;
